@@ -3,6 +3,8 @@ FROM openjdk:8-jre-alpine
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
+RUN mkdir -p /data/appdatas/cat
+RUN mkdir -p /data/applogs/cat
 WORKDIR $CATALINA_HOME
 
 # let "Tomcat Native" live somewhere isolated
@@ -10,10 +12,6 @@ ENV TOMCAT_NATIVE_LIBDIR $CATALINA_HOME/native-jni-lib
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$TOMCAT_NATIVE_LIBDIR
 
 RUN apk add --no-cache gnupg
-
-RUN sudo mkdir /data/appdatas/cat
-RUN sudo mkdir /data/applogs/cat
-RUN sudo chmod 777 /data/applogs/cat
 
 # see https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/KEYS
 # see also "update.sh" (https://github.com/docker-library/tomcat/blob/master/update.sh)
@@ -125,10 +123,6 @@ RUN set -e \
 		echo >&2 "$nativeLines"; \
 		exit 1; \
 	fi
-
-RUN sudo mkdir /data/appdatas/cat
-RUN sudo mkdir /data/applogs/cat
-RUN sudo chmod 777 /data/applogs/cat
 
 ADD cat.war $CATALINA_HOME/webapps/
 COPY client.xml /data/appdatas/cat
