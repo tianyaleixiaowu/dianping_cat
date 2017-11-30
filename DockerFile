@@ -122,7 +122,10 @@ RUN set -e \
 		exit 1; \
 	fi
 
+RUN mkdir /data/appdatas/cat
+RUN mkdir /data/applogs/cat
 
+ADD cat.war $CATALINA_HOME/webapps/
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
