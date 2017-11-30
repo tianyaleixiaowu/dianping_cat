@@ -10,7 +10,7 @@
 			<driver>com.mysql.jdbc.Driver</driver>
 			<url><![CDATA[jdbc:mysql://172.26.249.246:3306/cat]]></url>
 			<user>md</user>
-			<password>maida6868</password>
+			<password>${PASSWORD}</password>
 			<connectionProperties><![CDATA[useUnicode=true&autoReconnect=true]]></connectionProperties>
 		</properties>
 	</data-source>
@@ -23,7 +23,7 @@
 			<driver>com.mysql.jdbc.Driver</driver>
 			<url><![CDATA[jdbc:mysql://172.26.249.246:3306/cat]]></url>
 			<user>md</user>
-			<password>maida6868</password>
+			<password>${PASSWORD}</password>
 			<connectionProperties><![CDATA[useUnicode=true&autoReconnect=true]]></connectionProperties>
 		</properties>
 	</data-source>
