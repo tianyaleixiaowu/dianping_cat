@@ -126,6 +126,9 @@ RUN mkdir /data/appdatas/cat
 RUN mkdir /data/applogs/cat
 
 ADD cat.war $CATALINA_HOME/webapps/
+COPY client.xml /data/appdatas/cat
+COPY datasources.xml /data/appdatas/cat
+COPY server.xml /data/appdatas/cat
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
